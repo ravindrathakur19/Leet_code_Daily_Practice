@@ -6,12 +6,11 @@ public:
         for(int i=0;i<2*n;i++){
             if(i%2==0){
                 sumEven = sumEven+i;
-            }            
+            }else{
+                sumOdd = sumOdd+i;
+            }           
         }
-        for(int i=0;i<2*n;i++){
-            if(i%2!=0){
-                sumOdd = sumOdd+i;            }
-        }
+        
         while(sumEven!=0){
             int temp = sumEven;
             sumEven = sumOdd%sumEven;
