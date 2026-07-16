@@ -2,20 +2,20 @@ class Solution {
 public:
     long long gcdSum(vector<int>& nums) {
         int n=nums.size();
-        vector<int> a(n);
         int mx=0;
+
         for(int i=0;i<n;i++){
-            mx=max(mx,nums[i]);
-            a[i]=std::gcd(nums[i],mx);
+            if(nums[i]>mx) mx = nums[i];
+            nums[i] = gcd(mx,nums[i]);
         }
-        sort(a.begin(),a.end());
-        long long ans=0;
-        int l=0,r=n-1;
-        while(l<r){
-            ans+=std::gcd(a[l], a[r]);
-            l++;
-            r--;
+
+        sort(nums.begin(),nums.end());
+        int l=0, h=n-1;
+        long long result=0;
+        while(l<h){
+            result += gcd(nums[l],nums[h]);
+            l++;h--;
         }
-        return ans;
+        return result;
     }
 };
